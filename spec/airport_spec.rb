@@ -16,6 +16,14 @@ describe Airport do
       error_message = 'Can not land as the airport is full!'
       expect { airport.land_plane }.to raise_error error_message
     end
+
+    it 'prevents landing when the weather is stormy' do
+      plane = Plane.new
+      weather = Weather.new
+      airport = Airport.new(plane, weather)
+      weather_update = 'Can not land as weather is stormy!'
+      expect { airport.land_plane }.to raise_error weather_update
+    end
   end
 
   describe '#take_off' do
