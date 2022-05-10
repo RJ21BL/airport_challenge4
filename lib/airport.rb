@@ -1,13 +1,19 @@
 require_relative './plane'
+require 'pry'
 class Airport
-  def initialize(plane)
+  attr_writer :capacity
+  AIRPORT_CAPACITY = 3
+  def initialize(plane, capacity = AIRPORT_CAPACITY)
     @planes = []
     @plane = plane
+    @capacity = capacity
   end
-  
+
   def land_plane
-    puts 'A plane has landed at the airport!'
     @planes << @plane
+    puts 'A plane has landed at the airport!'
+    error_message = 'Can not land as the airport is full!'
+    fail error_message if full?
   end
 
   def take_off
@@ -17,5 +23,10 @@ class Airport
 
   def plane_count
     @planes.count
+  end
+
+  private
+  def full?
+    @planes.count > @capacity
   end
 end

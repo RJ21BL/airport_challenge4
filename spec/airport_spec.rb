@@ -8,6 +8,14 @@ describe Airport do
       airport = Airport.new(plane)
       expect { airport.land_plane }.to change { airport.plane_count }.by(1)
     end
+
+    xit 'prevents landing when the airport is full' do
+      plane = Plane.new
+      airport = Airport.new(plane)
+      4.times{ airport.land_plane }
+      error_message = 'Can not land as the airport is full!'
+      expect { airport.land_plane }.to raise_error error_message
+    end
   end
 
   describe '#take_off' do
