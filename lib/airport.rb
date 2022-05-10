@@ -5,7 +5,8 @@ class Airport
     @plane = plane
   end
   
-  def landed_planes
+  def land_plane
+    puts 'A plane has landed at the airport!'
     @planes << @plane
   end
 end
