@@ -39,5 +39,15 @@ describe Airport do
       airport.land_plane
       expect { airport.take_off }.to change { airport.plane_count }.by(-1)
     end
+
+    it 'does not allow the plane to take off if the weather is stormy' do
+      plane = Plane.new
+      weather = Weather.new
+      airport = Airport.new(plane, weather)
+      weather_update = 'Can not take off as the weather is stormy!'
+
+      allow(weather).to receive(:random_weather).and_return('stormy')
+      expect { airport.take_off }.to raise_error weather_update
+    end
   end
 end
