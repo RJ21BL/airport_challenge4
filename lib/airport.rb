@@ -15,7 +15,7 @@ class Airport
     @planes << @plane
     error_message = 'Can not land as the airport is full!'
     fail error_message if full?
-    weather_update = 'Can not land as weather is stormy!'
+    weather_update = 'Can not land as the weather is stormy!'
     fail weather_update if stormy?
     puts 'A plane has landed at the airport!'
   end
