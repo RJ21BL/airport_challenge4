@@ -24,7 +24,8 @@ class Airport
     @planes.pop
     weather_update = 'Can not take off as the weather is stormy!'
     fail weather_update if stormy?
-    puts 'A plane has departed the airport!'
+    departure_message = 'A plane has departed the airport!'
+    departure_message
   end
 
   def plane_count
