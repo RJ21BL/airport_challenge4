@@ -3,6 +3,7 @@ require_relative './weather'
 require 'pry'
 class Airport
   attr_writer :capacity
+
   AIRPORT_CAPACITY = 3
   def initialize(plane, weather, capacity = AIRPORT_CAPACITY)
     @planes = []
@@ -14,16 +15,20 @@ class Airport
   def land_plane
     @planes << @plane
     error_message = 'Can not land as the airport is full!'
-    fail error_message if full?
+    raise error_message if full?
+
     weather_update = 'Can not land as the weather is stormy!'
-    fail weather_update if stormy?
-    puts 'A plane has landed at the airport!'
+    raise weather_update if stormy?
+    
+    arrival_message = 'A plane has landed at the airport!'
+    arrival_message
   end
 
   def take_off
     @planes.pop
     weather_update = 'Can not take off as the weather is stormy!'
-    fail weather_update if stormy?
+    raise weather_update if stormy?
+
     departure_message = 'A plane has departed the airport!'
     departure_message
   end
@@ -33,6 +38,7 @@ class Airport
   end
 
   private
+  
   def full?
     @planes.count > @capacity
   end

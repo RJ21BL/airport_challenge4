@@ -11,14 +11,14 @@ describe Airport do
       expect { airport.land_plane }.to change { airport.plane_count }.by(1)
     end
 
-    xit 'prevents landing when the airport is full' do
+    it 'prevents landing when the airport is full' do
       error_message = 'Can not land as the airport is full!'
       allow(weather).to receive(:random_weather).and_return('sunny')
       4.times { airport.land_plane }
       expect { airport.land_plane }.to raise_error error_message
     end
 
-    xit 'prevents landing when the weather is stormy' do
+    it 'prevents landing when the weather is stormy' do
       weather_update = 'Can not land as the weather is stormy!'
       allow(weather).to receive(:random_weather).and_return('stormy')
       airport.land_plane
@@ -39,7 +39,7 @@ describe Airport do
       expect(airport.take_off).to eq departure_message
     end
 
-    xit 'does not allow the plane to take off if the weather is stormy' do
+    it 'does not allow the plane to take off if the weather is stormy' do
       allow(weather).to receive(:random_weather).and_return('stormy')
       airport.take_off
       weather_update = 'Can not take off as the weather is stormy!'
