@@ -4,7 +4,7 @@ describe Plane do
   describe '#land' do
     it 'can land' do
       plane = Plane.new
-      expect(plane.land).to eq true
+      expect(plane.plane).to eq true
     end
   end
 end

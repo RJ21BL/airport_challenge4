@@ -19,7 +19,7 @@ class Airport
 
     weather_update = 'Can not land as the weather is stormy!'
     raise weather_update if stormy?
-    
+
     arrival_message = 'A plane has landed at the airport!'
     arrival_message
   end
@@ -38,7 +38,7 @@ class Airport
   end
 
   private
-  
+
   def full?
     @planes.count > @capacity
   end
